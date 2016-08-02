@@ -7,3 +7,4 @@
          filename: 'bundle.js'
      }
  };
+ 
