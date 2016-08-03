@@ -1,85 +1,30 @@
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var View = require('./view/view.js');
+var Model = require('./model/model.js');
+var model = new Model();
+model.init();
+var view = new View();
 
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
+view.render(model);
 
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
-/******/ 			return installedModules[moduleId].exports;
+},{"./model/model.js":2,"./view/view.js":3}],2:[function(require,module,exports){
+function Model () {
 
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			exports: {},
-/******/ 			id: moduleId,
-/******/ 			loaded: false
-/******/ 		};
+}
 
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+Model.prototype.init = function () {
+  console.log('Inited');
+};
 
-/******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
+module.exports = Model;
+},{}],3:[function(require,module,exports){
+function View () {
 
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
+}
 
+View.prototype.render = function () {
+  console.log('Render');
+};
 
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(0);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var View = __webpack_require__(1);
-	var Model = __webpack_require__(2);
-	var model = new Model();
-	model.init();
-	var view = new View();
-
-	view.render(model);
-
-
-/***/ },
-/* 1 */
-/***/ function(module, exports) {
-
-	function View () {
-
-	}
-
-	View.prototype.render = function () {
-	  console.log('Render');
-	};
-
-	module.exports = View;
-
-/***/ },
-/* 2 */
-/***/ function(module, exports) {
-
-	function Model () {
-
-	}
-
-	Model.prototype.init = function () {
-	  console.log('Inited');
-	};
-
-	module.exports = Model;
-
-/***/ }
-/******/ ]);
+module.exports = View;
+},{}]},{},[1]);
