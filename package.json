@@ -5,14 +5,12 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "http-server -p 8080",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build-js": "browserify src/app.js > bundle.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "http-server": "^0.9.0",
-    "open": "0.0.5",
-    "browserify": "latest"
+    "open": "0.0.5"
   }
 }
