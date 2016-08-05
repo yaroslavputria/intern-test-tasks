@@ -1,13 +1,6 @@
-// var View = require('./view/view.js');
-// var Model = require('./model/model.js');
+'use strict';
 
-
-
-// require.config({
-
-// });
-
-require(
+window.require(
 	['model/model', 'view/view'],
 	function(Model, View){
 		var model = new Model();
@@ -17,5 +10,3 @@ require(
 		view.render(model);
 	}
 );
-
-

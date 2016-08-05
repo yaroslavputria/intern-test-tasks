@@ -1,14 +1,6 @@
-// function Model () {
+'use strict';
 
-// }
-
-// Model.prototype.init = function () {
-//   console.log('Inited');
-// };
-
-// module.exports = Model;
-
-define(
+window.define(
 	function() {
 		function Model () {
 
