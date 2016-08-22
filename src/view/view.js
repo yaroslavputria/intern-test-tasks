@@ -1,6 +1,6 @@
 'use strict';
 
-window.define(
+define(
 	function() {
 		function View () {
 

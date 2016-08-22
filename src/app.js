@@ -1,12 +1,10 @@
 'use strict';
 
-window.require(
-	['model/model', 'view/view'],
-	function(Model, View){
-		var model = new Model();
-		model.init();
-		
+SystemJS.import('src/model/model.js').then(function(Model) {
+	var model = new Model();
+	model.init();
+	SystemJS.import('src/view/view.js').then(function(View) {
 		var view = new View();
 		view.render(model);
-	}
-);
+	});
+});
