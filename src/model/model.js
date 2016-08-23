@@ -18,16 +18,73 @@ define(
 			.then(res => res.json());
 		};
 
-		Model.prototype.filterGists = function (arrOfGists, type, lang) {
-			return arrOfGists.filter(function(gist) {
-				for(var prop in gist.files) {
-					if (gist.files[prop].type === type && gist.files[prop].language === lang) {
-						return true;
-					} else return false;
-				}; 
+		Model.prototype.filterFiles = function (arrOfGists, type, lang) {
+			if ({}.toString.call(arrOfGists).slice(8, -1) === 'Array') {
+				var arrOfFiles = [];
+				// arrOfGists.forEach(function(gist) {
+				// 	for(var prop in gist.files) {
+				// 		if (type && gist.files[prop].type === type) {
+				// 			if (lang && gist.files[prop].language === lang) {
+				// 				arrOfFiles.push(gist.files[prop]);
+				// 			} else {
+				// 				arrOfFiles.push(gist.files[prop]);
+				// 			};
+				// 		} else if (lang && gist.files[prop].language === lang){
+				// 			arrOfFiles.push(gist.files[prop]);
+				// 		} else {
+				// 			arrOfFiles.push(gist.files[prop]);
+				// 		};
+				// 	}; 
+				// });
+
+				if (type) {
+					if (lang) {
+						arrOfGists.forEach(function(gist) {
+							for(var prop in gist.files) {
+								if (gist.files[prop].type === type && gist.files[prop].language === lang){
+									arrOfFiles.push(gist.files[prop]);
+								};
+							};
+						});
+					} else {
+						arrOfGists.forEach(function(gist) {
+							for(var prop in gist.files) {
+								if (gist.files[prop].type === type){
+									arrOfFiles.push(gist.files[prop]);
+								};
+							};
+						});
+					};
+				} else {
+					if (lang){
+						arrOfGists.forEach(function(gist) {
+							for(var prop in gist.files) {
+								if (gist.files[prop].language === lang){
+									arrOfFiles.push(gist.files[prop]);
+								};
+							};
+						});
+					} else {
+						arrOfGists.forEach(function(gist) {
+							for(var prop in gist.files) {
+								arrOfFiles.push(gist.files[prop]);
+							};
+						});
+					};
+				};
+				return arrOfFiles;
+			} else {
+				throw new Error("wrong input data");
+			};
+		};
+ 		
+		Model.prototype.filterByName = function (arrOfFiles) {
+			return arrOfFiles.map(file => {
+				return file.filename;
 			});
 		};
- 
+
 		return Model;
+
 	}
 );
