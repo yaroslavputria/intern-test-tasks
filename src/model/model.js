@@ -11,8 +11,8 @@ define(
 		};
 
 		Model.prototype.getAllGists = function (name) {
-			return fetch("https://api.github.com/users/" + name + "/gists", {
-				method: "GET",
+			return fetch('https://api.github.com/users/' + name + '/gists', {
+				method: 'GET',
 				mode: 'cors'
 			})
 			.then(res => res.json());
@@ -41,41 +41,49 @@ define(
 					if (lang) {
 						arrOfGists.forEach(function(gist) {
 							for(var prop in gist.files) {
-								if (gist.files[prop].type === type && gist.files[prop].language === lang){
-									arrOfFiles.push(gist.files[prop]);
-								};
-							};
+								if (gist.files.hasOwnProperty(prop)){
+									if (gist.files[prop].type === type && gist.files[prop].language === lang){
+										arrOfFiles.push(gist.files[prop]);
+									}
+								}
+							}
 						});
 					} else {
 						arrOfGists.forEach(function(gist) {
 							for(var prop in gist.files) {
-								if (gist.files[prop].type === type){
-									arrOfFiles.push(gist.files[prop]);
-								};
-							};
+								if (gist.files.hasOwnProperty(prop)){
+									if (gist.files[prop].type === type){
+										arrOfFiles.push(gist.files[prop]);
+									}
+								}
+							}
 						});
-					};
+					}
 				} else {
 					if (lang){
 						arrOfGists.forEach(function(gist) {
 							for(var prop in gist.files) {
-								if (gist.files[prop].language === lang){
-									arrOfFiles.push(gist.files[prop]);
-								};
-							};
+								if (gist.files.hasOwnProperty(prop)){
+									if (gist.files[prop].language === lang){
+										arrOfFiles.push(gist.files[prop]);
+									}
+								}
+							}
 						});
 					} else {
 						arrOfGists.forEach(function(gist) {
-							for(var prop in gist.files) {
-								arrOfFiles.push(gist.files[prop]);
-							};
+							for (var prop in gist.files) {
+								if (gist.files.hasOwnProperty(prop)){
+									arrOfFiles.push(gist.files[prop]);
+								}
+							}
 						});
-					};
-				};
+					}
+				}
 				return arrOfFiles;
 			} else {
-				throw new Error("wrong input data");
-			};
+				throw new Error('wrong input data');
+			}
 		};
  		
 		Model.prototype.filterByName = function (arrOfFiles) {

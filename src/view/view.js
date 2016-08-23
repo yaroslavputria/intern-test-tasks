@@ -7,14 +7,14 @@ define(
 		}
 
 		View.prototype.render = function () {
-		  var h1 = document.createElement('h1');
-		  h1.textContent = 'View works :)';
-		  document.body.appendChild(h1);
-		  console.log('Render');
+			var h1 = document.createElement('h1');
+			h1.textContent = 'View works :)';
+			document.body.appendChild(h1);
+			console.log('Render');
 
-		  var form = document.createElement('form');
-		  // 	inputForName = document.createElement('input');
-		  // inputForName.type = "text";
+			var form = document.createElement('form');
+			// 	inputForName = document.createElement('input');
+			// inputForName.type = "text";
 		form.innerHTML = `
 			<label> lang:<br>
 				<select name="lang" id="lang">
